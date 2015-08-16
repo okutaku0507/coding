@@ -16,6 +16,7 @@ if (Root === 'http://localhost:3000') {
   WebSocketRoot = '';
 }
 var WsRails = new WebSocketRails(WebSocketRoot + "/websocket");
+var owner = 0;
 
 var CodingApp = React.createClass({
 
@@ -49,6 +50,7 @@ var CodingApp = React.createClass({
         }
       });
       _this.setState({code: {code: ace_editor_value}});
+      owner = 1;
       WsRails.trigger('websocket_code', {id: SessionStore.getCodeId(), code: ace_editor_value});
       e.preventDefault();
       e.stopPropagation();
@@ -65,9 +67,11 @@ var CodingApp = React.createClass({
     WsRails.bind('websocket_code', function(hash){
       var recieve_id = parseInt(hash.id);
       var recieve_code = hash.code;
-      if(recieve_id === SessionStore.getCodeId()) {
+      if(recieve_id === SessionStore.getCodeId() && owner === 0) {
         _this.setState({code: {code: recieve_code}}, function(){});
+        console.log('recieve');
       }
+      owner = 0;
     })
   },
 
@@ -88,6 +92,7 @@ var CodingApp = React.createClass({
   },
 
   _codeChange: function(e) {
+    owner = 1;
     this.setState({code: {code: e.target.value}});
     WsRails.trigger('websocket_code', {id: SessionStore.getCodeId(), code: e.target.value});
     e.preventDefault();
