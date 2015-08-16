@@ -69,7 +69,6 @@ var CodingApp = React.createClass({
       var recieve_code = hash.code;
       if(recieve_id === SessionStore.getCodeId() && owner === 0) {
         _this.setState({code: {code: recieve_code}}, function(){});
-        console.log('recieve');
       }
       owner = 0;
     })
