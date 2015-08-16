@@ -4,7 +4,6 @@ _ = require('underscore');
 
 var router = require('./router')
 var RouteActionCreators = require('./actions/RouteActionCreators');
-var Modal = require('./components/Modal');
 
 window.Coding = {}
 window.Coding.router = router;
