@@ -6,6 +6,7 @@
 //= require ace/mode-ruby
 //= require jquery-ace.min
 //= require websocket_rails/main
+//= require twitter/bootstrap
 
 var React = require('react');
 window.React = React;
