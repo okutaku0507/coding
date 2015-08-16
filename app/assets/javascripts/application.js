@@ -10,3 +10,7 @@
 var React = require('react');
 window.React = React;
 _ = require('underscore');
+
+$(document).ready(function(){
+  $('.alert').delay(5000).fadeOut(1000);
+});

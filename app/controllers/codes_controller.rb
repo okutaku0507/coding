@@ -3,6 +3,7 @@ class CodesController < ApplicationController
     code = Code.new(code: "puts 'Hello, world.'")
     if code.save
       session[:code_id] = code.id
+      flash.notice = "Please share this url with your friends."
       redirect_to room_path(token: code.token)
     else
       flash.alert = "An Error occurred."
