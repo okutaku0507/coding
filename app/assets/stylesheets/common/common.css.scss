@@ -1,0 +1,141 @@
+// common/common.css.scss
+@import 'common/colors';
+@import 'common/dimensions';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Menlo, Monaco, "Open Sans", "Helvetica Neue", Helvetica, "Arial", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+  height: 100%;
+  background-color: #f1f1f1 !important;
+}
+
+div#container {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  margin-top: -61px;
+  padding-top: 61px;
+}
+
+div#header {
+  width: 100%;
+  border-bottom: 1px solid $base_gray;
+  background: #fff;
+  z-index: 1000;
+
+  div#header_bar {
+    width: 90%;
+    margin: auto;
+    padding: 10px 0;
+    a {
+      text-decoration: none;
+      margin: 0;
+      font-size: 1.5em;
+      color: #333;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+    }
+  }
+}
+
+.dropdown-menu {
+  li {
+    a:hover {
+      background: #009966 !important;
+      opacity: 0.8;
+    }
+  }
+}
+
+div.header-navbar {
+  background: #002B36;
+  a{
+    color: #fff !important;
+  }
+
+  a:hover{
+    color: #DDD !important;
+  }
+}
+
+div#footer {
+  width: 100%;
+  margin-top: 80px;
+  color: $footer_str;
+  position: absolute;
+  bottom: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  a { color: $footer_str; }
+}
+
+div#content {
+  width: 100%;
+  margin: auto;
+  padding: 15px 5%;
+  background: #fff;
+
+  div.heading {
+    margin: 0 0 20px;
+
+    h1{
+      margin: 0;
+      font-size: 20px;
+      color: #333333;
+    }
+  }
+}
+
+div#flash {
+  width: 100%;
+
+  div#flash_alert {
+    width: 40%;
+    margin: 0 auto;
+    padding: 10px 5%;
+    border: 1px solid $base_gray;
+    border-top: none;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #555555;
+    text-align: center;
+    position: relative;
+    border-radius: 0px 0px 6px 6px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+img {
+  border-style: none;
+}
+
+@media(min-width:768px) {
+  .navbar-float-clear {
+    display: none !important;
+  }
+}
+
+.nopadding {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.no-user-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+}

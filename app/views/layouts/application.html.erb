@@ -1,0 +1,31 @@
+<%
+  before_authentication = controller.controller_name == 'top' && controller.action_name == 'index'
+%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= page_title %></title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <%= render 'shared/read_js' %>
+  <meta name="keywords" content="Coding,code,realtime,share" />
+  <meta name="description" content="Sharing Code in Realtime" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Sharing Code in Realtime　- Coding" />
+  <meta property="og:description" content=Sharing Code in Realtime"" />
+  <meta property="og:image" content="<%= image_url('background.jpg', only_path: false) %>"/>
+  <meta property="og:url" content="<%= request.url %>"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Coding"/>
+</head>
+<body id="<%= 'before_authentication' if before_authentication %>">
+  <%= render "shared/header" unless before_authentication %>
+  <div id="container" style="<%= 'margin: 0;' if before_authentication %>">
+    <%= flash_messages %>
+    <%= yield %>
+  </div>
+  <%= render 'shared/footer'%>
+  <%= javascript_include_tag 'load_webapp' unless before_authentication %>
+</body>
+</html>

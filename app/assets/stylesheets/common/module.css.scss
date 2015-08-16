@@ -1,0 +1,191 @@
+// 全てに対応するモジュール
+
+@charset "utf-8";
+
+/* ==============================
+* _ini_module.scss
+============================== */
+
+/* ----- clearfix ----- */
+.group {
+	*zoom: 1;
+	&:after {
+		content: ".";
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+/* ----- font ----- */
+.fwb { font-weight: bold; }
+.fwn { font-weight: normal; }
+.fwi { font-style: italic; }
+
+.fsl { font-size: 125%; }
+.fss { font-size: 85%; }
+
+@for $i from 10 through 30 {
+	.fs#{$i} { font-size: #{$i}px !important; }
+}
+
+.fcAtt { color : #f00; }
+.fcNote { color: #999; }
+.fcRed { color: #DE6641 !important;}
+
+/* ----- background-color ----- */
+.bgcMain {
+	background: #009966 !important;
+	color: #fff;
+}
+.bgcSub {
+	background: #00DB92;
+	color: #fff;
+}
+.bgcBlue {
+	background: #0B4F96;
+	color: #fff;
+}
+.bgcRed {
+	background: #B23C1F;
+	color: #fff;
+}
+
+
+
+
+/* ----- margin ----- */
+@for $i from 0 through 10 {
+	$val : $i * 5;
+	.mt#{$val} {
+		margin-top: #{$val}px !important;
+	}
+	.mr#{$val} {
+		margin-right: #{$val}px !important;
+	}
+	.mb#{$val} {
+		margin-bottom: #{$val}px !important;
+	}
+	.ml#{$val} {
+		margin-left: #{$val}px !important;
+	}
+}
+
+.ma0 { margin: 0 !important; }
+.centering { margin-left: auto !important; margin-right: auto !important; }
+
+/* ----- padding ----- */
+@for $i from 0 through 10 {
+	.pa#{$i} {
+		padding: #{$i}px !important;
+	}
+}
+@for $i from 0 through 10 {
+	$val : $i * 5;
+	.pt#{$val} {
+		padding-top: #{$val}px !important;
+	}
+	.pr#{$val} {
+		padding-right: #{$val}px !important;
+	}
+	.pb#{$val} {
+		padding-bottom: #{$val}px !important;
+	}
+	.pl#{$val} {
+		padding-left: #{$val}px !important;
+	}
+	.plr#{$val} {
+		padding-right: #{$val}px !important;
+		padding-left: #{$val}px !important;
+	}
+	.ptb#{$val} {
+		padding-top: #{$val}px !important;
+		padding-bottom: #{$val}px !important;
+	}
+}
+
+/* ----- width ----- */
+.wiMax {
+	width: 100%;
+}
+@for $i from 1 through 80 {
+	$val : ($i*10);
+	.wi#{$val} {
+		width: #{$val}px !important;
+	}
+}
+@for $i from 1 through 9 {
+	$val : ($i*10);
+	.wi#{$val}per {
+		width: #{$val}% !important;
+	}
+}
+
+/* ----- line-height ----- */
+.lh1 { line-height: 1 !important; }
+.lh15 { line-height: 1.5 !important; }
+.lh2 { line-height: 2 !important; }
+
+/* ----- text-indent ----- */
+.indentS {
+	text-indent: -0.5em;
+	padding-left: 0.5em;
+}
+.indentM {
+	text-indent: -1em;
+	padding-left: 1em;
+}
+.indentL {
+	text-indent: -1.3em;
+	padding-left: 1.3em;
+}
+
+/* ----- text-align ----- */
+.tar { text-align: right !important; }
+.tac { text-align: center !important; }
+.tal { text-align: left !important; }
+
+/* ----- text-decration ----- */
+.tdu { text-decoration: underline !important; }
+.tdn { text-decoration: none !important; }
+
+/* ----- vertical-align ----- */
+.vat { vertical-align: top !important; }
+.vatb { vertical-align: text-bottom !important; }
+.vam { vertical-align: middle !important; }
+.vab { vertical-align: bottom !important; }
+
+/* ----- display ----- */
+.block { display: block !important; }
+.inline { display: inline !important; }
+.inlineb { display: inline-block !important; }
+.none { display: none !important; }
+
+/* ----- background ----- */
+
+/* ----- color ----- */
+
+/* ----- float ----- */
+.left { float: left !important; }
+.right { float: right !important; }
+.rect { overflow: hidden; zoom: 1; }
+.noFlo { float: none !important; }
+
+.clear {
+	clear: both;
+}
+
+/* ----- border ----- */
+.bordersld {border: 1px solid #ccc;}
+.borderdot {border: 1px dotted #ccc;}
+@for $i from 0 through 10 {
+	$val : $i * 1;
+	.radius#{$val} {
+		border-radius: #{$val}px !important;
+	}
+}
+
+/* ----- white-space ----- */
+.wsn {white-space: normal;}
+.wsnp {white-space: nowrap;}

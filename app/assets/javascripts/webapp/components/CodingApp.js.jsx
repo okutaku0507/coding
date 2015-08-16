@@ -1,0 +1,111 @@
+var React = require('react');
+var RouteHandler = require('react-router').RouteHandler;
+var _ = require('underscore');
+
+var InitialActionCreators = require('../actions/InitialActionCreators');
+var InitialStore = require('../stores/InitialStore');
+var SessionStore = require('../stores/SessionStore');
+var CodingAppViewStore = require('../stores/CodingAppViewStore');
+var Root = window.location.origin;
+var WebSocketRoot;
+if (Root === 'http://localhost:3000') {
+  WebSocketRoot = 'localhost:3000';
+} else if (Root === 'http://coding.herokuapp.com' || Root === 'http://coding.herokuapp.com') {
+  WebSocketRoot = 'coding.herokuapp.com';
+} else if (Root === 'http://coding.com') {
+  WebSocketRoot = 'coding.com';
+}
+var WsRails = new WebSocketRails(WebSocketRoot + "/websocket");
+
+var CodingApp = React.createClass({
+
+  STORES: [InitialStore, SessionStore],
+
+  hasAppInitialized: false,
+
+  getStateFromStores: function() {
+    return {
+      hasAppInitialized: this.hasAppInitialized,
+      code: SessionStore.getCode(),
+      notificationMessages: CodingAppViewStore.getNotificationMessages()
+    }
+  },
+
+  getInitialState: function() {
+    return this.getStateFromStores();
+  },
+
+  initializeStateWithStores: function() {
+    var _this = this;
+    var ace_editor_value = '';
+    InitialActionCreators.loadInitialData();
+    $('#react_area').on('keyup', '.ace_editor', function(e){
+      ace_editor_value = '';
+      $('div.ace_line').each(function(index) {
+        if (index === 0) {
+          ace_editor_value += $(this).text();
+        } else {
+          ace_editor_value += "\n" + $(this).text();
+        }
+      });
+      _this.setState({code: {code: ace_editor_value}});
+      WsRails.trigger('websocket_code', {id: SessionStore.getCodeId(), code: ace_editor_value});
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  },
+
+  componentDidMount: function() {
+    var _this = this;
+    this.STORES.forEach(function(store) {
+      store.addChangeListener(_this._onChange);
+    });
+    CodingAppViewStore.addChangeListener(this._onChange);
+    this.initializeStateWithStores();
+    WsRails.bind('websocket_code', function(hash){
+      var recieve_id = parseInt(hash.id);
+      var recieve_code = hash.code;
+      if(recieve_id === SessionStore.getCodeId()) {
+        _this.setState({code: {code: recieve_code}}, function(){});
+      }
+    })
+  },
+
+  componentWillUnmount: function() {
+    var _this = this;
+    this.STORES.forEach(function(store) {
+      store.removeChangeListener(_this._onChange);
+    });
+    CodingAppViewStore.removeChangeListener(this._onChange);
+  },
+
+  _onChange: function() {
+    var _this = this;
+    if (_.all(this.STORES, function(store) { return store.hasInitialized();})) {
+      _this.hasAppInitialized = true;
+    }
+    this.setState(this.getStateFromStores());
+  },
+
+  _codeChange: function(e) {
+    this.setState({code: {code: e.target.value}});
+    WsRails.trigger('websocket_code', {id: SessionStore.getCodeId(), code: e.target.value});
+    e.preventDefault();
+    e.stopPropagation();
+  },
+
+  componentDidUpdate: function() {
+  },
+
+  render: function() {
+    var code = SessionStore.getCode();
+    var defaultValue = this.state.code.code || code.code || "puts 'Hello, World.'";
+    return (
+      <textarea id='my-code-area' style={{width: '100%', height: '90%'}}
+        value={this.state.code.code} onChange={this._codeChange}>{this.state.code.code}</textarea>
+    );
+  }
+
+});
+
+module.exports = CodingApp;

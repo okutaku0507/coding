@@ -1,0 +1,5 @@
+<div id="flash">
+  <div id="flash_alert" style="<%= flash.present? ? '' : 'display: none;' %>">
+    <%= flash.alert if flash.present? %>
+  </div>
+</div>

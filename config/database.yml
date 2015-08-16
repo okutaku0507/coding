@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+development:
+  <<: *default
+  adapter: mysql2
+  database: coding_development
+  encoding: utf8
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+test:
+  <<: *default
+  adapter: mysql2
+  database: coding_test
+  encoding: utf8
+  socket: /tmp/mysql.sock
+  username: root
+  password:
+production:
+  <<: *default
+  database: coding_production

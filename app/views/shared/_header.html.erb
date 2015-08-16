@@ -1,0 +1,28 @@
+<div class="navbar navbar-default navbar-static-top header-navbar mb10">
+  <h1 class="ma0">
+    <%= link_to "Coding", :root, :class => "navbar-brand" %>
+  </h1>
+  <a class="btn btn-navbar navbar-toggle mr15 ml0" data-toggle="collapse" data-target=".navbar-collapse"
+    style="background: #002B36 !important; border: none;">
+    <span class="icon-bar" style="background: #DDD;"></span>
+    <span class="icon-bar" style="background: #DDD;"></span>
+    <span class="icon-bar" style="background: #DDD;"></span>
+  </a>
+  <div class="navbar-float-clear clear"></div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse" >
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="http://www.facebook.com/share.php?u=https://euglena.herokuapp.com" onclick="window.open(encodeURI(decodeURI(this.href)), 'FBwindow', 'width=554, height=470, menubar=no, toolbar=no, scrollbars=yes'); return false;" rel="nofollow">
+          <%= fa_icon('facebook-official', text: 'Facebook Share') %>
+        </a>
+      </li>
+      <li>
+        <a href="http://twitter.com/share?text=Sharing%20Code%20in%20Realtime%20by%20@takuya_okuhara&url=https://coding.herokuapp.com"
+          onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow',
+          'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');return false;" rel="nofollow">
+          <%= fa_icon('twitter', text: 'Twitter Share') %>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
