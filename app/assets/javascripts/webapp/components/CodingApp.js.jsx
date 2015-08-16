@@ -10,10 +10,10 @@ var Root = window.location.origin;
 var WebSocketRoot;
 if (Root === 'http://localhost:3000') {
   WebSocketRoot = 'localhost:3000';
-} else if (Root === 'http://coding.herokuapp.com' || Root === 'http://coding.herokuapp.com') {
-  WebSocketRoot = 'coding.herokuapp.com';
-} else if (Root === 'http://coding.com') {
-  WebSocketRoot = 'coding.com';
+} else if (Root === 'https://sharing-code-in-realtime.herokuapp.com' || Root === 'http://sharing-code-in-realtime.herokuapp.com') {
+  WebSocketRoot = 'sharing-code-in-realtime.herokuapp.com';
+} else if (Root === '') {
+  WebSocketRoot = '';
 }
 var WsRails = new WebSocketRails(WebSocketRoot + "/websocket");
 

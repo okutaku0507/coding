@@ -6,10 +6,10 @@ var WebSocketRoot;
 
 if (Root === 'http://localhost:3000') {
   WebSocketRoot = 'http://localhost:3000';
-} else if (Root === 'https://coding.herokuapp.com' || Root === 'http://coding.herokuapp.com') {
-  WebSocketRoot = 'https://coding.herokuapp.com';
-} else if (Root === 'http://coding.com') {
-  WebSocketRoot = 'http://coding.com';
+} else if (Root === 'https://sharing-code-in-realtime.herokuapp.com' || Root === 'http://sharing-code-in-realtime.herokuapp.com') {
+  WebSocketRoot = 'https://sharing-code-in-realtime.herokuapp.com';
+} else if (Root === '') {
+  WebSocketRoot = '';
 }
 
 module.exports = {
